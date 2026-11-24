@@ -1,0 +1,786 @@
+[
+ {
+  "id": "01-velora-order-form",
+  "set": "dev",
+  "file": "data/sources/01-velora-order-form.txt",
+  "labels": {
+   "vendor": "Velora Analytics Ltd",
+   "amount": {
+    "amount": 24000,
+    "currency": "EUR"
+   },
+   "termMonths": 12,
+   "autoRenew": true,
+   "noticeDays": 60,
+   "liabilityCap": {
+    "amount": 48000,
+    "currency": "EUR"
+   },
+   "dpaPresent": true,
+   "paymentTermsDays": 30
+  }
+ },
+ {
+  "id": "02-kestrel-renewal",
+  "set": "dev",
+  "file": "data/sources/02-kestrel-renewal.txt",
+  "labels": {
+   "vendor": "Kestrel Metrics Inc.",
+   "amount": {
+    "amount": 6500,
+    "currency": "USD"
+   },
+   "termMonths": 12,
+   "autoRenew": true,
+   "noticeDays": 14,
+   "liabilityCap": {
+    "amount": 6500,
+    "currency": "USD"
+   },
+   "dpaPresent": true,
+   "paymentTermsDays": 45
+  }
+ },
+ {
+  "id": "03-castor-hosting",
+  "set": "dev",
+  "file": "data/sources/03-castor-hosting.txt",
+  "labels": {
+   "vendor": "Castor Hosting SARL",
+   "amount": {
+    "amount": 50400,
+    "currency": "EUR"
+   },
+   "termMonths": 36,
+   "autoRenew": false,
+   "noticeDays": 30,
+   "liabilityCap": "unlimited",
+   "dpaPresent": false,
+   "paymentTermsDays": 45
+  }
+ },
+ {
+  "id": "04-ironbridge-support",
+  "set": "dev",
+  "file": "data/sources/04-ironbridge-support.txt",
+  "labels": {
+   "vendor": "Ironbridge Support Ltd",
+   "amount": {
+    "amount": 1800,
+    "currency": "GBP"
+   },
+   "termMonths": 6,
+   "autoRenew": false,
+   "noticeDays": null,
+   "liabilityCap": null,
+   "dpaPresent": null,
+   "paymentTermsDays": 30
+  }
+ },
+ {
+  "id": "05-helio-training-proposal",
+  "set": "dev",
+  "file": "data/sources/05-helio-training-proposal.txt",
+  "labels": {
+   "vendor": "Helio Learning BV",
+   "amount": null,
+   "termMonths": 3,
+   "autoRenew": null,
+   "noticeDays": null,
+   "liabilityCap": {
+    "amount": 5000,
+    "currency": "EUR"
+   },
+   "dpaPresent": true,
+   "paymentTermsDays": null
+  }
+ },
+ {
+  "id": "06-orbit-statement-of-work",
+  "set": "dev",
+  "file": "data/sources/06-orbit-statement-of-work.txt",
+  "labels": {
+   "vendor": "Orbit Design Studio LLC",
+   "amount": {
+    "amount": 3500,
+    "currency": "EUR"
+   },
+   "termMonths": 3,
+   "autoRenew": null,
+   "noticeDays": 30,
+   "liabilityCap": {
+    "amount": 3500,
+    "currency": "EUR"
+   },
+   "dpaPresent": null,
+   "paymentTermsDays": null
+  }
+ },
+ {
+  "id": "07-quartz-data-feed",
+  "set": "dev",
+  "file": "data/sources/07-quartz-data-feed.txt",
+  "labels": {
+   "vendor": "Quartz Data Feeds Inc",
+   "amount": {
+    "amount": 12000,
+    "currency": "USD"
+   },
+   "termMonths": 24,
+   "autoRenew": true,
+   "noticeDays": 90,
+   "liabilityCap": {
+    "amount": 12000,
+    "currency": "EUR"
+   },
+   "dpaPresent": true,
+   "paymentTermsDays": 60
+  }
+ },
+ {
+  "id": "08-tessera-storage-schedule",
+  "set": "dev",
+  "file": "data/sources/08-tessera-storage-schedule.txt",
+  "labels": {
+   "vendor": "Tessera Storage SAS",
+   "amount": {
+    "amount": 9900,
+    "currency": "EUR"
+   },
+   "termMonths": 24,
+   "autoRenew": true,
+   "noticeDays": 21,
+   "liabilityCap": null,
+   "dpaPresent": null,
+   "paymentTermsDays": null
+  }
+ },
+ {
+  "id": "h01-marrowgate-licence",
+  "set": "heldout",
+  "lines": [
+   "SOFTWARE LICENCE AND SUPPORT QUOTE (SYNTHETIC EXAMPLE)",
+   "Supplier: Marrowgate Software Ltd",
+   "Quote summary: The licence covers 40 users for an initial term of 24 months. The total price for the initial term is GBP 36,000.",
+   "Fees are invoiced annually in advance and are payable within 30 days of the invoice date.",
+   "After the initial term the licence renews automatically for further periods of 12 months, unless either party gives at least 90 days' written notice before the renewal date.",
+   "Marrowgate's total liability under this quote is limited to GBP 72,000 in the aggregate.",
+   "The Supplier will provide a data processing agreement on signature; it is attached as Appendix 3."
+  ],
+  "labels": {
+   "vendor": "Marrowgate Software Ltd",
+   "amount": {
+    "amount": 36000,
+    "currency": "GBP"
+   },
+   "termMonths": 24,
+   "autoRenew": true,
+   "noticeDays": 90,
+   "liabilityCap": {
+    "amount": 72000,
+    "currency": "GBP"
+   },
+   "dpaPresent": true,
+   "paymentTermsDays": 30
+  }
+ },
+ {
+  "id": "h02-fennimore-cloud",
+  "set": "heldout",
+  "lines": [
+   "CLOUD PLATFORM SUBSCRIPTION (SYNTHETIC EXAMPLE)",
+   "Provider: Fennimore Cloud GmbH",
+   "Subscription term: Three (3) years from the Effective Date.",
+   "Total contract value: EUR 18.500,00 for the whole subscription term, excluding VAT.",
+   "Invoices are due Net 45 from the invoice date.",
+   "This subscription does not renew automatically; it expires at the end of the term unless a new order is signed.",
+   "Fennimore's aggregate liability is capped at EUR 100,000 per contract year.",
+   "A data processing addendum is incorporated by reference and forms part of this subscription."
+  ],
+  "labels": {
+   "vendor": "Fennimore Cloud GmbH",
+   "amount": {
+    "amount": 18500,
+    "currency": "EUR"
+   },
+   "termMonths": 36,
+   "autoRenew": false,
+   "noticeDays": null,
+   "liabilityCap": {
+    "amount": 100000,
+    "currency": "EUR"
+   },
+   "dpaPresent": true,
+   "paymentTermsDays": 45
+  }
+ },
+ {
+  "id": "h03-tidewell-analytics",
+  "set": "heldout",
+  "lines": [
+   "ANALYTICS SERVICES ORDER (SYNTHETIC EXAMPLE)",
+   "Vendor: Tidewell Analytics Inc",
+   "Term: 12 months",
+   "Annual fee: $ 7,200 payable in one instalment.",
+   "Payment terms: 30 days from receipt of invoice.",
+   "The agreement renews for successive 12-month terms unless cancelled in writing at least 45 days before the end of the current term.",
+   "Either party's liability is limited to the fees paid in the preceding 12 months.",
+   "Data protection: the Supplier acts as a processor and the parties will sign a DPA before the service starts."
+  ],
+  "labels": {
+   "vendor": "Tidewell Analytics Inc",
+   "amount": {
+    "amount": 7200,
+    "currency": "USD"
+   },
+   "termMonths": 12,
+   "autoRenew": true,
+   "noticeDays": 45,
+   "liabilityCap": null,
+   "dpaPresent": null,
+   "paymentTermsDays": 30
+  }
+ },
+ {
+  "id": "h04-corvane-security",
+  "set": "heldout",
+  "lines": [
+   "MANAGED SECURITY SERVICES QUOTE (SYNTHETIC EXAMPLE)",
+   "Supplier: Corvane Security BV",
+   "Services: 24/7 monitoring, incident response retainer and quarterly reporting.",
+   "Contract period: 36 months starting on signature.",
+   "Total charges: EUR 96,000 over the contract period.",
+   "Payment is made quarterly in arrears, within 60 days of invoice.",
+   "Liability: There is no limit on the Supplier's liability for breach of confidentiality or data protection obligations.",
+   "A data processing agreement is not offered; the Supplier's standard privacy notice applies.",
+   "Renewal: renewal requires a new written order."
+  ],
+  "labels": {
+   "vendor": "Corvane Security BV",
+   "amount": {
+    "amount": 96000,
+    "currency": "EUR"
+   },
+   "termMonths": 36,
+   "autoRenew": false,
+   "noticeDays": null,
+   "liabilityCap": "unlimited",
+   "dpaPresent": false,
+   "paymentTermsDays": 60
+  }
+ },
+ {
+  "id": "h05-palisade-print",
+  "set": "heldout",
+  "lines": [
+   "PRINT AND FULFILMENT AGREEMENT (SYNTHETIC EXAMPLE)",
+   "Supplier: Palisade Print SAS",
+   "Term: 18 months",
+   "Estimated total price: EUR 4,800 for the term, based on forecast volumes.",
+   "Payment within 30 days of invoice.",
+   "The agreement continues after the initial term for successive 6-month periods unless terminated by either party giving 3 months' written notice.",
+   "Liability under this agreement shall not exceed EUR 4,800."
+  ],
+  "labels": {
+   "vendor": "Palisade Print SAS",
+   "amount": {
+    "amount": 4800,
+    "currency": "EUR"
+   },
+   "termMonths": 18,
+   "autoRenew": true,
+   "noticeDays": 90,
+   "liabilityCap": {
+    "amount": 4800,
+    "currency": "EUR"
+   },
+   "dpaPresent": null,
+   "paymentTermsDays": 30
+  }
+ },
+ {
+  "id": "h06-brindle-logistics",
+  "set": "heldout",
+  "lines": [
+   "TRANSPORT FRAMEWORK QUOTE (SYNTHETIC EXAMPLE)",
+   "This quote is issued by Brindle Logistics Ltd (the \"Supplier\") to the Customer for domestic freight services.",
+   "Initial term: 12 months.",
+   "Charges: the Supplier will charge GBP 2,400 per month, invoiced monthly.",
+   "Payment terms: 14 days from invoice date.",
+   "Auto-renewal applies for 12 months at a time, with 30 days notice required to stop renewal.",
+   "The Supplier's liability is capped at GBP 25,000 per claim.",
+   "No data processing agreement is required because no personal data is shared."
+  ],
+  "labels": {
+   "vendor": "Brindle Logistics Ltd",
+   "amount": null,
+   "termMonths": 12,
+   "autoRenew": true,
+   "noticeDays": 30,
+   "liabilityCap": {
+    "amount": 25000,
+    "currency": "GBP"
+   },
+   "dpaPresent": false,
+   "paymentTermsDays": 14
+  }
+ },
+ {
+  "id": "h07-quenby-telecom",
+  "set": "heldout",
+  "lines": [
+   "BUSINESS CONNECTIVITY ORDER (SYNTHETIC EXAMPLE)",
+   "Supplier: Quenby Telecom SA",
+   "Term: 24 months",
+   "The monthly charge is EUR 1,150, giving a total of EUR 27,600 over the term.",
+   "Invoices are payable 30 days end of month.",
+   "The service renews automatically for 12 months at the then-current rates unless the Customer gives 60 days written notice.",
+   "Liability: capped at EUR 55,200 (two years of charges).",
+   "Data processing: see the Data Processing Agreement attached as Schedule 4."
+  ],
+  "labels": {
+   "vendor": "Quenby Telecom SA",
+   "amount": {
+    "amount": 27600,
+    "currency": "EUR"
+   },
+   "termMonths": 24,
+   "autoRenew": true,
+   "noticeDays": 60,
+   "liabilityCap": {
+    "amount": 55200,
+    "currency": "EUR"
+   },
+   "dpaPresent": true,
+   "paymentTermsDays": 30
+  }
+ },
+ {
+  "id": "h08-saltmarsh-consulting",
+  "set": "heldout",
+  "lines": [
+   "CONSULTING STATEMENT OF WORK (SYNTHETIC EXAMPLE)",
+   "Supplier: Saltmarsh Consulting LLP",
+   "Duration: 4 months.",
+   "The fixed fee for the project is GBP 28,000, payable 50% on signature and 50% on delivery.",
+   "Invoices are payable within 14 days.",
+   "Either party may terminate this statement of work on 10 days notice.",
+   "The Supplier excludes all liability for indirect loss. Liability for direct loss is capped at GBP 28,000.",
+   "Where personal data is processed, the data processing agreement dated 2 March forms part of this statement of work."
+  ],
+  "labels": {
+   "vendor": "Saltmarsh Consulting LLP",
+   "amount": {
+    "amount": 28000,
+    "currency": "GBP"
+   },
+   "termMonths": 4,
+   "autoRenew": null,
+   "noticeDays": 10,
+   "liabilityCap": {
+    "amount": 28000,
+    "currency": "GBP"
+   },
+   "dpaPresent": true,
+   "paymentTermsDays": 14
+  }
+ },
+ {
+  "id": "h09-wexcombe-labs",
+  "set": "heldout",
+  "lines": [
+   "LABORATORY INFORMATION SYSTEM SUBSCRIPTION (SYNTHETIC EXAMPLE)",
+   "Supplier: Wexcombe Labs Ltd",
+   "Subscription term: 12 months",
+   "Total first-year cost: $17,000, comprising a $2,000 set-up fee and a $15,000 subscription.",
+   "Payment terms: Net 30.",
+   "The subscription will renew automatically unless the Customer gives notice of non-renewal at least 60 days before expiry.",
+   "Liability: the Supplier accepts unlimited liability for death or personal injury caused by its negligence; all other liability is capped at USD 30,000.",
+   "No DPA has been provided. The Supplier will discuss one on request."
+  ],
+  "labels": {
+   "vendor": "Wexcombe Labs Ltd",
+   "amount": {
+    "amount": 17000,
+    "currency": "USD"
+   },
+   "termMonths": 12,
+   "autoRenew": true,
+   "noticeDays": 60,
+   "liabilityCap": {
+    "amount": 30000,
+    "currency": "USD"
+   },
+   "dpaPresent": false,
+   "paymentTermsDays": 30
+  }
+ },
+ {
+  "id": "h10-dunmore-facilities",
+  "set": "heldout",
+  "lines": [
+   "FACILITIES MANAGEMENT AGREEMENT (SYNTHETIC EXAMPLE)",
+   "Service provider: Dunmore Facilities Group Ltd",
+   "Term: 2 years",
+   "Contract value: GBP 144,000 in total across the term.",
+   "Payment: invoices are issued monthly and are due within 28 days.",
+   "This agreement shall automatically renew for 12 months unless either party serves at least 6 months' written notice before the end of the term.",
+   "In no event shall the Supplier's total liability exceed GBP 1,000,000.",
+   "A data processing agreement is attached as Annex C."
+  ],
+  "labels": {
+   "vendor": "Dunmore Facilities Group Ltd",
+   "amount": {
+    "amount": 144000,
+    "currency": "GBP"
+   },
+   "termMonths": 24,
+   "autoRenew": true,
+   "noticeDays": 180,
+   "liabilityCap": {
+    "amount": 1000000,
+    "currency": "GBP"
+   },
+   "dpaPresent": true,
+   "paymentTermsDays": 28
+  }
+ },
+ {
+  "id": "h11-arkwright-mobile",
+  "set": "heldout",
+  "lines": [
+   "MOBILE DEVICE LEASE QUOTE (SYNTHETIC EXAMPLE)",
+   "Supplier: Arkwright Mobile Inc.",
+   "Term: 36 months",
+   "Total lease payments: USD 21,600.",
+   "Payment terms: Net 30.",
+   "The lease does not automatically renew and ends on the last day of the term.",
+   "Liability is limited to the replacement value of the devices."
+  ],
+  "labels": {
+   "vendor": "Arkwright Mobile Inc.",
+   "amount": {
+    "amount": 21600,
+    "currency": "USD"
+   },
+   "termMonths": 36,
+   "autoRenew": false,
+   "noticeDays": null,
+   "liabilityCap": null,
+   "dpaPresent": null,
+   "paymentTermsDays": 30
+  }
+ },
+ {
+  "id": "h12-pemberly-insights",
+  "set": "heldout",
+  "lines": [
+   "MARKET RESEARCH LICENCE (SYNTHETIC EXAMPLE)",
+   "Supplier: Pemberly Insights Ltd",
+   "Licence period: 12 months",
+   "Fee: EUR 12,500 (annual licence fee).",
+   "Payment terms: within 30 days.",
+   "The licence is renewed automatically each year. To stop renewal, the Customer must notify the Supplier no later than 14 days before the anniversary.",
+   "The Supplier's aggregate liability is capped at EUR 12,500.",
+   "The DPA is available on request."
+  ],
+  "labels": {
+   "vendor": "Pemberly Insights Ltd",
+   "amount": {
+    "amount": 12500,
+    "currency": "EUR"
+   },
+   "termMonths": 12,
+   "autoRenew": true,
+   "noticeDays": 14,
+   "liabilityCap": {
+    "amount": 12500,
+    "currency": "EUR"
+   },
+   "dpaPresent": null,
+   "paymentTermsDays": 30
+  }
+ },
+ {
+  "id": "h13-hollin-legaltech",
+  "set": "heldout",
+  "lines": [
+   "CONTRACT MANAGEMENT PLATFORM ORDER (SYNTHETIC EXAMPLE)",
+   "Supplier: Hollin Legal Tech LLP",
+   "Term: 12 months",
+   "Total: GBP 9,600",
+   "Payment terms: Net 30",
+   "The Order Form renews for successive 12-month terms unless notice of non-renewal is given at least 30 days before the end of the then-current term.",
+   "Hollin's aggregate liability is capped at GBP 19,200.",
+   "The Data Processing Agreement is attached as Annex A."
+  ],
+  "labels": {
+   "vendor": "Hollin Legal Tech LLP",
+   "amount": {
+    "amount": 9600,
+    "currency": "GBP"
+   },
+   "termMonths": 12,
+   "autoRenew": true,
+   "noticeDays": 30,
+   "liabilityCap": {
+    "amount": 19200,
+    "currency": "GBP"
+   },
+   "dpaPresent": true,
+   "paymentTermsDays": 30
+  }
+ },
+ {
+  "id": "h14-ostrava-robotics",
+  "set": "heldout",
+  "lines": [
+   "ROBOTICS MAINTENANCE QUOTE (SYNTHETIC EXAMPLE)",
+   "Supplier: Ostrava Robotics s.r.o.",
+   "Term: 5 years",
+   "Total price: EUR 75,000 over the five-year term, payable annually.",
+   "Payment terms: 30 days net.",
+   "The maintenance agreement does not contain an automatic renewal clause.",
+   "Liability is capped at EUR 150,000.",
+   "The Supplier has not agreed to a data processing agreement."
+  ],
+  "labels": {
+   "vendor": "Ostrava Robotics s.r.o.",
+   "amount": {
+    "amount": 75000,
+    "currency": "EUR"
+   },
+   "termMonths": 60,
+   "autoRenew": false,
+   "noticeDays": null,
+   "liabilityCap": {
+    "amount": 150000,
+    "currency": "EUR"
+   },
+   "dpaPresent": false,
+   "paymentTermsDays": 30
+  }
+ },
+ {
+  "id": "b01-larkspur-data",
+  "set": "blind",
+  "lines": [
+   "DATA PLATFORM ORDER (SYNTHETIC EXAMPLE)",
+   "Supplier: Larkspur Data Ltd",
+   "Order duration: 12 months from signature.",
+   "Fees: GBP 30,000 per annum, invoiced annually.",
+   "Payment is due 30 days after the invoice date.",
+   "At the end of the duration the order is extended for another 12 months, unless the Customer terminates in writing 60 days beforehand.",
+   "The Supplier's maximum aggregate liability to the Customer is GBP 60,000.",
+   "The Supplier and the Customer have signed a data processing agreement dated 4 January 2026."
+  ],
+  "labels": {
+   "vendor": "Larkspur Data Ltd",
+   "amount": {
+    "amount": 30000,
+    "currency": "GBP"
+   },
+   "termMonths": 12,
+   "autoRenew": true,
+   "noticeDays": 60,
+   "liabilityCap": {
+    "amount": 60000,
+    "currency": "GBP"
+   },
+   "dpaPresent": true,
+   "paymentTermsDays": 30
+  }
+ },
+ {
+  "id": "b02-thornbury-print",
+  "set": "blind",
+  "lines": [
+   "QUOTATION NO. 4471 (SYNTHETIC EXAMPLE)",
+   "From: Thornbury Print & Design Ltd",
+   "Project fee: €5,400 (fixed).",
+   "Delivery within 6 weeks of artwork approval.",
+   "Terms of payment: 14 days.",
+   "No renewal. This is a one-off project."
+  ],
+  "labels": {
+   "vendor": "Thornbury Print & Design Ltd",
+   "amount": {
+    "amount": 5400,
+    "currency": "EUR"
+   },
+   "termMonths": null,
+   "autoRenew": false,
+   "noticeDays": null,
+   "liabilityCap": null,
+   "dpaPresent": null,
+   "paymentTermsDays": 14
+  }
+ },
+ {
+  "id": "b03-calder-voss",
+  "set": "blind",
+  "lines": [
+   "MAINTENANCE AGREEMENT (SYNTHETIC EXAMPLE)",
+   "Contractor: Calder & Voss GmbH",
+   "Minimum contract period: 24 months.",
+   "Price: EUR 2.400,00 per quarter, i.e. EUR 19.200,00 over the minimum period.",
+   "Invoices are payable within 21 days.",
+   "After the minimum period the agreement renews automatically for 12 months; either party may terminate with 3 months' notice to the end of a period.",
+   "Liability is limited to the annual fee.",
+   "The parties conclude a data processing agreement (Annex 2) which is part of this contract."
+  ],
+  "labels": {
+   "vendor": "Calder & Voss GmbH",
+   "amount": {
+    "amount": 19200,
+    "currency": "EUR"
+   },
+   "termMonths": 24,
+   "autoRenew": true,
+   "noticeDays": 90,
+   "liabilityCap": null,
+   "dpaPresent": true,
+   "paymentTermsDays": 21
+  }
+ },
+ {
+  "id": "b04-innsworth-cloud",
+  "set": "blind",
+  "lines": [
+   "CLOUD SERVICE ORDER (SYNTHETIC EXAMPLE)",
+   "Vendor name: Innsworth Cloud Inc.",
+   "Commitment: USD 60,000 for a 12-month subscription.",
+   "Billing: Net 30.",
+   "The subscription auto-renews for 12 months.",
+   "Cap: 12 months of fees.",
+   "DPA: Yes, executed."
+  ],
+  "labels": {
+   "vendor": "Innsworth Cloud Inc.",
+   "amount": {
+    "amount": 60000,
+    "currency": "USD"
+   },
+   "termMonths": 12,
+   "autoRenew": true,
+   "noticeDays": null,
+   "liabilityCap": null,
+   "dpaPresent": true,
+   "paymentTermsDays": 30
+  }
+ },
+ {
+  "id": "b05-rookwood-staffing",
+  "set": "blind",
+  "lines": [
+   "MASTER SERVICES AGREEMENT SUMMARY (SYNTHETIC EXAMPLE)",
+   "Supplier: Rookwood Staffing Ltd",
+   "Term: until 31 March 2027.",
+   "Estimated annual spend: GBP 220,000 (not guaranteed).",
+   "Invoices are raised weekly, with payment within 7 days.",
+   "Either party may terminate on 30 days written notice.",
+   "Supplier liability is uncapped.",
+   "The Supplier will sign the Customer's standard DPA."
+  ],
+  "labels": {
+   "vendor": "Rookwood Staffing Ltd",
+   "amount": {
+    "amount": 220000,
+    "currency": "GBP"
+   },
+   "termMonths": null,
+   "autoRenew": null,
+   "noticeDays": 30,
+   "liabilityCap": "unlimited",
+   "dpaPresent": null,
+   "paymentTermsDays": 7
+  }
+ },
+ {
+  "id": "b06-ashgrove-software",
+  "set": "blind",
+  "lines": [
+   "SOFTWARE MAINTENANCE RENEWAL (SYNTHETIC EXAMPLE)",
+   "Supplier: Ashgrove Software SL",
+   "Renewal period: 12 months.",
+   "Total: EUR 8,750",
+   "Payment: 30 days.",
+   "This maintenance renews each year unless Ashgrove or the Customer gives notice 45 days prior to the anniversary.",
+   "Liability is capped at 100% of the annual fees.",
+   "DPA attached."
+  ],
+  "labels": {
+   "vendor": "Ashgrove Software SL",
+   "amount": {
+    "amount": 8750,
+    "currency": "EUR"
+   },
+   "termMonths": 12,
+   "autoRenew": true,
+   "noticeDays": 45,
+   "liabilityCap": null,
+   "dpaPresent": true,
+   "paymentTermsDays": 30
+  }
+ },
+ {
+  "id": "b07-pellham-energy",
+  "set": "blind",
+  "lines": [
+   "ENERGY SERVICES CONTRACT (SYNTHETIC EXAMPLE)",
+   "Supplier: Pellham Energy Services Ltd",
+   "Contract term: 3 years.",
+   "Contract sum: GBP 310,000.",
+   "Payment: monthly in arrears, 30 days.",
+   "The contract may be extended by agreement for up to two further periods of 12 months.",
+   "Liability: £5m in the aggregate.",
+   "No personal data is processed under this contract."
+  ],
+  "labels": {
+   "vendor": "Pellham Energy Services Ltd",
+   "amount": {
+    "amount": 310000,
+    "currency": "GBP"
+   },
+   "termMonths": 36,
+   "autoRenew": false,
+   "noticeDays": null,
+   "liabilityCap": {
+    "amount": 5000000,
+    "currency": "GBP"
+   },
+   "dpaPresent": null,
+   "paymentTermsDays": 30
+  }
+ },
+ {
+  "id": "b08-holloway-av",
+  "set": "blind",
+  "lines": [
+   "AV EQUIPMENT HIRE AGREEMENT (SYNTHETIC EXAMPLE)",
+   "Vendor: Holloway Audio Visual Ltd",
+   "Term: 12 months",
+   "Total contract value: £48,000 plus VAT.",
+   "Payment: 30 days net.",
+   "This agreement automatically renews for 12 months unless cancelled with 60 days notice.",
+   "Liability is limited to £100,000 for any one incident.",
+   "A DPA is attached."
+  ],
+  "labels": {
+   "vendor": "Holloway Audio Visual Ltd",
+   "amount": {
+    "amount": 48000,
+    "currency": "GBP"
+   },
+   "termMonths": 12,
+   "autoRenew": true,
+   "noticeDays": 60,
+   "liabilityCap": {
+    "amount": 100000,
+    "currency": "GBP"
+   },
+   "dpaPresent": true,
+   "paymentTermsDays": 30
+  }
+ }
+]

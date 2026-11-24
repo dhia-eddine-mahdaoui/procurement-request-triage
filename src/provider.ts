@@ -1,17 +1,19 @@
-import { extractTerms } from "./extract.js";
-import type { Amount, Evidence, ExtractedTerms, TermKey } from "./types.js";
+import { extractFromUnits } from "./extract.js";
+import { fullText } from "./document.js";
+import type { ParsedDocument } from "./document.js";
+import type { Amount, DocUnit, Evidence, ExtractedTerms, TermKey } from "./types.js";
 
 export interface ExtractionProvider {
   readonly name: string;
-  extract(text: string): Promise<ExtractedTerms>;
+  extract(doc: ParsedDocument): Promise<ExtractedTerms>;
 }
 
 /** Default backend: deterministic rules, works fully offline. */
 export class RuleProvider implements ExtractionProvider {
   readonly name = "rules";
 
-  async extract(text: string): Promise<ExtractedTerms> {
-    return extractTerms(text);
+  async extract(doc: ParsedDocument): Promise<ExtractedTerms> {
+    return extractFromUnits(doc.units);
   }
 }
 
@@ -39,18 +41,24 @@ liabilityCap, dpaPresent, paymentTermsDays. Each key maps to {"value": ..., "sni
 Use {"value": null, "snippet": null} when the document does not state the term.
 amount: {"amount": number, "currency": "EUR"|"USD"|"GBP"}. liabilityCap: amount object or "unlimited".`;
 
+type RawTerms = Record<string, { value?: unknown; snippet?: unknown } | undefined>;
+
 /**
  * Optional OpenAI-compatible chat endpoint, enabled with TRIAGE_PROVIDER=llm.
  * Output is grounded: a value is kept only if its snippet appears verbatim in the document.
- * Not exercised by the automated tests (no endpoint is available offline).
+ * The HTTP call is injectable (`fetchImpl`) so request/response handling is tested against a stub;
+ * it has not been run against a live model.
  */
 export class OpenAICompatibleProvider implements ExtractionProvider {
   readonly name = "llm";
 
-  constructor(private readonly cfg: { url: string; model: string; apiKey: string }) {}
+  constructor(
+    private readonly cfg: { url: string; model: string; apiKey: string },
+    private readonly fetchImpl: typeof fetch = fetch,
+  ) {}
 
-  async extract(text: string): Promise<ExtractedTerms> {
-    const res = await fetch(this.cfg.url, {
+  async extract(doc: ParsedDocument): Promise<ExtractedTerms> {
+    const res = await this.fetchImpl(this.cfg.url, {
       method: "POST",
       headers: { "content-type": "application/json", authorization: `Bearer ${this.cfg.apiKey}` },
       body: JSON.stringify({
@@ -59,7 +67,7 @@ export class OpenAICompatibleProvider implements ExtractionProvider {
         response_format: { type: "json_object" },
         messages: [
           { role: "system", content: SYSTEM_PROMPT },
-          { role: "user", content: text },
+          { role: "user", content: fullText(doc.pages) },
         ],
       }),
     });
@@ -67,18 +75,19 @@ export class OpenAICompatibleProvider implements ExtractionProvider {
     const body = (await res.json()) as { choices?: { message?: { content?: string } }[] };
     const content = body.choices?.[0]?.message?.content;
     if (!content) throw new Error("LLM provider returned an empty response");
-    return groundTerms(JSON.parse(content) as Record<string, Partial<Evidence<unknown>>>, text);
+    return groundTerms(JSON.parse(content) as RawTerms, doc.units);
   }
 }
 
-export function groundTerms(raw: Record<string, Partial<Evidence<unknown>>>, text: string): ExtractedTerms {
+/** Keeps a model-returned value only if its snippet is a verbatim part of a document unit; adds the page number. */
+export function groundTerms(raw: RawTerms, units: DocUnit[]): ExtractedTerms {
   const out = {} as Record<TermKey, Evidence<unknown>>;
   for (const key of Object.keys(VALIDATORS) as TermKey[]) {
     const item = raw[key];
-    const snippet = typeof item?.snippet === "string" ? item.snippet : null;
-    const grounded = snippet !== null && text.includes(snippet);
+    const snippet = typeof item?.snippet === "string" && item.snippet.trim() ? item.snippet.trim() : null;
+    const unit = snippet ? units.find((u) => u.text.includes(snippet)) : undefined;
     const valid = item?.value !== undefined && item.value !== null && VALIDATORS[key](item.value);
-    out[key] = grounded && valid ? { value: item!.value as never, snippet } : { value: null, snippet: null };
+    out[key] = unit && valid ? { value: item!.value, snippet: snippet!, page: unit.page } : { value: null, snippet: null, page: null };
   }
   return out as unknown as ExtractedTerms;
 }

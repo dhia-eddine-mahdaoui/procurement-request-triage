@@ -3,7 +3,8 @@ dist/
 web/dist/
 .env
 .env.*
-data/store.json
-data/*.db
-data/*.db-journal
+!.env.example
 *.log
+cdk.out/
+.venv-ffmpeg/
+infra/node_modules/

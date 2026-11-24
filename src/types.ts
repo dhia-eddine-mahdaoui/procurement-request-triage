@@ -8,11 +8,25 @@ export interface Amount {
   currency: string;
 }
 
-/** A extracted value plus the verbatim source line it came from (null when not found). */
+/** An extracted value plus the verbatim source passage and page it came from (null when not found). */
 export interface Evidence<T> {
   value: T | null;
   snippet: string | null;
+  page: number | null;
 }
+
+/** One paragraph-level unit of a parsed document. */
+export interface DocUnit {
+  text: string;
+  page: number;
+}
+
+export interface DocPage {
+  page: number;
+  paragraphs: string[];
+}
+
+export type SourceType = "pdf" | "text";
 
 export interface ExtractedTerms {
   vendor: Evidence<string>;
@@ -35,6 +49,7 @@ export interface RiskFlag {
 }
 
 export interface PolicyEvaluation {
+  policyVersion: string;
   flags: RiskFlag[];
   route: Route;
   riskLevel: Severity | "none";
@@ -44,7 +59,9 @@ export interface PurchaseRequest {
   id: string;
   title: string;
   sourceName: string;
-  text: string;
+  sourceType: SourceType;
+  hasDocument: boolean;
+  pages: DocPage[];
   extractor: string;
   terms: ExtractedTerms;
   evaluation: PolicyEvaluation;
@@ -52,6 +69,8 @@ export interface PurchaseRequest {
   createdAt: string;
   updatedAt: string;
 }
+
+export type RequestSummary = Omit<PurchaseRequest, "pages">;
 
 export interface AuditEvent {
   id: string;

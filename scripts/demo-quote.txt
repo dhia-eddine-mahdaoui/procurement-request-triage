@@ -1,0 +1,10 @@
+ANALYTICS PLATFORM ORDER FORM (SYNTHETIC EXAMPLE)
+Vendor: Halberd Analytics Ltd
+Requesting department: Revenue Operations
+Initial term: 24 months from the Effective Date
+Total contract value: GBP 42,000.00, excluding VAT
+Payment terms: invoices payable Net 30 from receipt
+Auto-renewal: This Order Form shall automatically renew for successive 12-month periods unless notice of non-renewal is given.
+Notice of non-renewal: at least 14 days before the end of the then-current term.
+Liability: Supplier's aggregate liability is capped at GBP 84,000.
+Data processing: a data processing agreement is available on request.

@@ -1,0 +1,19 @@
+# Local Postgres for development and tests. Settings come from .env (create it with `npm run env:init`).
+name: ${COMPOSE_PROJECT_NAME:-procurement-triage}
+
+services:
+  db:
+    image: postgres:16-alpine
+    env_file: .env
+    ports:
+      - "${DB_BIND}:${DB_HOST_PORT}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+volumes:
+  pgdata:

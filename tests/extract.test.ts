@@ -3,9 +3,9 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { extractTerms, parseAmount } from "../src/extract.js";
 import { groundTerms } from "../src/provider.js";
-import { SAMPLES_DIR } from "../src/paths.js";
+import { SOURCES_DIR } from "../src/paths.js";
 
-const sample = (name: string) => readFileSync(join(SAMPLES_DIR, name), "utf8");
+const sample = (name: string) => readFileSync(join(SOURCES_DIR, name), "utf8");
 
 describe("parseAmount", () => {
   it("reads symbol and code prefixes and trailing codes", () => {
@@ -24,7 +24,7 @@ describe("extractTerms on synthetic vendor documents", () => {
   it("extracts vendor, amount, term, auto-renew, notice, cap, DPA and payment terms with source lines", () => {
     const t = extractTerms(sample("01-velora-order-form.txt"));
     expect(t.vendor.value).toBe("Velora Analytics Ltd");
-    expect(t.amount).toEqual({ value: { amount: 24000, currency: "EUR" }, snippet: "Total contract value: EUR 24,000.00, excluding VAT" });
+    expect(t.amount).toEqual({ value: { amount: 24000, currency: "EUR" }, snippet: "Total contract value: EUR 24,000.00, excluding VAT", page: 1 });
     expect(t.termMonths.value).toBe(12);
     expect(t.autoRenew.value).toBe(true);
     expect(t.noticeDays.value).toBe(60);
@@ -55,14 +55,14 @@ describe("extractTerms on synthetic vendor documents", () => {
   it("treats 'not applicable' auto-renewal as false and leaves unstated fields null", () => {
     const t = extractTerms(sample("04-ironbridge-support.txt"));
     expect(t.autoRenew.value).toBe(false);
-    expect(t.liabilityCap).toEqual({ value: null, snippet: null });
-    expect(t.dpaPresent).toEqual({ value: null, snippet: null });
+    expect(t.liabilityCap).toEqual({ value: null, snippet: null, page: null });
+    expect(t.dpaPresent).toEqual({ value: null, snippet: null, page: null });
     expect(t.amount.value).toEqual({ amount: 1800, currency: "GBP" });
   });
 
   it("reports a missing key amount as null (incomplete quote)", () => {
     const t = extractTerms(sample("05-helio-training-proposal.txt"));
-    expect(t.amount).toEqual({ value: null, snippet: null });
+    expect(t.amount).toEqual({ value: null, snippet: null, page: null });
     expect(t.vendor.value).toBe("Helio Learning BV");
     expect(t.termMonths.value).toBe(3);
     expect(t.liabilityCap.value).toEqual({ amount: 5000, currency: "EUR" });
@@ -77,17 +77,54 @@ describe("extractTerms on synthetic vendor documents", () => {
   });
 });
 
+describe("parseAmount formats", () => {
+  it("reads continental separators and magnitude suffixes", () => {
+    expect(parseAmount("EUR 18.500,00")).toEqual({ amount: 18500, currency: "EUR" });
+    expect(parseAmount("EUR 1.000.000")).toEqual({ amount: 1000000, currency: "EUR" });
+    expect(parseAmount("£5m in the aggregate")).toEqual({ amount: 5000000, currency: "GBP" });
+    expect(parseAmount("USD 250k")).toEqual({ amount: 250000, currency: "USD" });
+  });
+});
+
+describe("sentence-level evidence", () => {
+  it("points at the sentence, not the whole paragraph, and ignores monthly figures next to a total", () => {
+    const t = extractTerms("Vendor: Acme Test Ltd\nThe monthly charge is EUR 1,150, giving a total of EUR 27,600 over the term. Payment is due within 30 days of invoice.");
+    expect(t.amount.value).toEqual({ amount: 27600, currency: "EUR" });
+    expect(t.amount.snippet).toBe("The monthly charge is EUR 1,150, giving a total of EUR 27,600 over the term.");
+    expect(t.paymentTermsDays.snippet).toBe("Payment is due within 30 days of invoice.");
+  });
+
+  it("converts notice given in months and prefers the figure attached to the notice", () => {
+    const t = extractTerms("Vendor: Acme Test Ltd\nThis agreement shall automatically renew for 12 months unless either party serves at least 6 months' written notice.");
+    expect(t.noticeDays.value).toBe(180);
+  });
+
+  it("uses the general cap when unlimited liability is only a carve-out", () => {
+    const t = extractTerms("Liability: unlimited for personal injury caused by negligence; all other liability is capped at USD 30,000.");
+    expect(t.liabilityCap.value).toEqual({ amount: 30000, currency: "USD" });
+  });
+});
+
 describe("groundTerms (LLM output guard)", () => {
-  it("drops values whose snippet is not verbatim in the document", () => {
-    const text = "Vendor: Acme Test Ltd\nTotal: EUR 5,000.00";
+  const units = [
+    { text: "Vendor: Acme Test Ltd", page: 1 },
+    { text: "Total: EUR 5,000.00", page: 2 },
+  ];
+
+  it("drops values whose snippet is not verbatim in the document and records the page of the ones that are", () => {
     const t = groundTerms(
       {
         vendor: { value: "Acme Test Ltd", snippet: "Vendor: Acme Test Ltd" },
         amount: { value: { amount: 9999, currency: "EUR" }, snippet: "Total: EUR 9,999.00" },
       },
-      text,
+      units,
     );
-    expect(t.vendor.value).toBe("Acme Test Ltd");
-    expect(t.amount).toEqual({ value: null, snippet: null });
+    expect(t.vendor).toEqual({ value: "Acme Test Ltd", snippet: "Vendor: Acme Test Ltd", page: 1 });
+    expect(t.amount).toEqual({ value: null, snippet: null, page: null });
+  });
+
+  it("drops values of the wrong type", () => {
+    const t = groundTerms({ amount: { value: "5000", snippet: "Total: EUR 5,000.00" } }, units);
+    expect(t.amount.value).toBeNull();
   });
 });

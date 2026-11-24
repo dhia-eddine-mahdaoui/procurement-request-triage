@@ -89,5 +89,5 @@ export function evaluate(terms: ExtractedTerms, policy: Policy): PolicyEvaluatio
     flags.length === 0
       ? "none"
       : SEVERITY_ORDER[Math.max(...flags.map((f) => SEVERITY_ORDER.indexOf(f.severity)))];
-  return { flags, route, riskLevel };
+  return { policyVersion: policy.version, flags, route, riskLevel };
 }
