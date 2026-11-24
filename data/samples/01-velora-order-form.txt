@@ -1,0 +1,11 @@
+ORDER FORM - SUBSCRIPTION (SYNTHETIC EXAMPLE)
+Vendor: Velora Analytics Ltd
+Requesting department: Data and Insights
+Product: Velora Insight Platform, Enterprise tier, 25 seats
+Initial term: 12 months from the Effective Date
+Total contract value: EUR 24,000.00, excluding VAT
+Payment terms: invoices payable Net 30 from receipt
+Auto-renewal: This Order Form shall automatically renew for successive 12-month periods unless notice of non-renewal is given.
+Notice of non-renewal: at least 60 days before the end of the then-current term.
+Liability: Supplier's aggregate liability is capped at EUR 48,000.
+Data processing: A Data Processing Agreement is attached as Annex B and forms part of this Order Form.

@@ -1,0 +1,11 @@
+SERVICE AGREEMENT - RENEWAL (SYNTHETIC EXAMPLE)
+Supplier: Kestrel Metrics Inc.
+Customer department: Marketing Operations
+Service: Kestrel Reporting API, annual license
+Term: 12 months
+Annual subscription fee: USD 6,500.00
+Payment: Net 45
+This renewal automatically renews for a further 12 months at the same fees.
+Either party may terminate by giving written notice 14 days before renewal.
+Limitation of liability: total liability shall not exceed the fees paid under this Agreement, capped at USD 6,500.
+A data processing addendum is included as Schedule 2.

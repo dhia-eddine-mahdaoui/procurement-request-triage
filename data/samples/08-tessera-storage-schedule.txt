@@ -1,0 +1,6 @@
+CLOUD STORAGE PRICE SCHEDULE (SYNTHETIC EXAMPLE)
+Supplier: Tessera Storage SAS
+Price: EUR 9,900.00 for 10 TB of storage
+Term: 24 months
+Renewal: The schedule renews automatically for 12 months unless cancelled at least 21 days in advance.
+Data protection: a data processing agreement is available on request.

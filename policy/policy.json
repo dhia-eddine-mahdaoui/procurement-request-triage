@@ -1,0 +1,51 @@
+{
+  "version": "2026.1",
+  "baseCurrency": "EUR",
+  "fxToBase": { "EUR": 1, "USD": 0.92, "GBP": 1.17 },
+  "routeOrder": ["requester", "procurement", "finance", "legal"],
+  "defaultRoute": "procurement",
+  "rules": [
+    {
+      "id": "AMOUNT_ABOVE_FINANCE_THRESHOLD",
+      "severity": "medium",
+      "route": "finance",
+      "check": { "type": "amount_gt_eur", "threshold": 10000 },
+      "message": "Total value {amountEur} EUR-equivalent is above the {threshold} EUR finance threshold."
+    },
+    {
+      "id": "AUTO_RENEW_SHORT_NOTICE",
+      "severity": "high",
+      "route": "procurement",
+      "check": { "type": "auto_renew_notice_below", "days": 30 },
+      "message": "Auto-renews with notice period {notice}; policy minimum is {days} days."
+    },
+    {
+      "id": "DPA_NOT_CONFIRMED",
+      "severity": "high",
+      "route": "legal",
+      "check": { "type": "dpa_not_confirmed" },
+      "message": "No confirmed data processing agreement in the document."
+    },
+    {
+      "id": "LIABILITY_CAP_MISSING",
+      "severity": "high",
+      "route": "legal",
+      "check": { "type": "liability_cap_missing" },
+      "message": "Liability is not capped by a quantified amount."
+    },
+    {
+      "id": "LIABILITY_UNLIMITED",
+      "severity": "high",
+      "route": "legal",
+      "check": { "type": "liability_unlimited" },
+      "message": "Supplier liability is stated as unlimited."
+    },
+    {
+      "id": "KEY_TERMS_MISSING",
+      "severity": "medium",
+      "route": "requester",
+      "check": { "type": "missing_fields", "fields": ["vendor", "amount", "termMonths"] },
+      "message": "Key terms not found in the document: {missing}. Ask the requester or supplier to complete the quote."
+    }
+  ]
+}

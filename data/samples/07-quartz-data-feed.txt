@@ -1,0 +1,8 @@
+DATA FEED SUBSCRIPTION (SYNTHETIC EXAMPLE)
+Supplier: Quartz Data Feeds Inc
+Term: 24 months
+Total contract value: USD 12,000.00
+Payment terms: Net 60
+The subscription shall automatically renew for successive 24-month periods unless either party gives notice at least 90 days before expiry.
+Aggregate liability is capped at EUR 12,000.
+Data Processing Addendum: attached (Annex 1).
